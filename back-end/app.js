@@ -27,11 +27,20 @@ mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertz
 app.post('/api/sauces', (req, res) => {
   const sauce = new Sauce ({
     ...req.body
+    // name: req.body.name,
+    // manufacturer: req.body.manufacturer,
+    // description: req.body.description,
+    // imageUrl: req.body.imageUrl,
+    // mainPepper: req.body.mainPepper,
+    // heat: req.body.heat
   });
   sauce.save()
     .then(() => res.status(201).json({ message: "Sauce bien ajoutée"}))
     .catch(error => res.status(400).json({ error: error }));
+
+    console.log(req.body);
 });
+
 
 // Sauce piquante exemple mis en dur
 app.get('/api/sauces', (req, res) => {
