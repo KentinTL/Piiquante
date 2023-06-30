@@ -1,11 +1,11 @@
 // Éléments et extensions requises
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
+const cors = require('cors');
 
+const saucesRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user');
-
-const Sauce = require('./models/Sauce');
 
 // Connection à mongoDB via Mongoose
 mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertzs0.mongodb.net/test?retryWrites=true&w=majority',
@@ -14,48 +14,27 @@ mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertz
   useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+  const app = express();
   
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   
-  app.use(express.json());
+  // app.use(express.json());
 
   next();
 });
 
-// Envoie d'une nouvelle sauce via le formulaire
-app.post('/api/sauces', (req, res) => {
-  const sauce = new Sauce ({
-    ...req.body
-    // name: req.body.name,
-    // manufacturer: req.body.manufacturer,
-    // description: req.body.description,
-    // imageUrl: req.body.imageUrl,
-    // mainPepper: req.body.mainPepper,
-    // heat: req.body.heat
-  });
-  sauce.save()
-    .then(() => res.status(201).json({ message: "Sauce bien ajoutée"}))
-    .catch(error => res.status(400).json({ error: error }));
+app.use(cors());
 
-    console.log(req.body);
-});
+app.use(bodyParser.json());
 
-
-// Sauce piquante exemple mis en dur
-app.get('/api/sauces', (req, res) => {
-  Sauce.find() //Query recherché
-    .then(sauces => res.status(200).json(sauces)) //Promise
-    .catch(error => res.status(400).json({ error: error }));
-});
-
-// Réponse de la base lorsque tout se passe bien
-app.use((req, res) => {
-  res.json({message: 'Votre requête est reçu (°o°)'})
-});
-
+app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
+// app.use((req, res) => {
+//   res.json({message: 'Votre requête est reçu (°o°)'})
+// });
 module.exports = app;

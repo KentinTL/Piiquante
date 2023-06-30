@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 
-exports.signup = (req, res, next) => {
+exports.signup = (req, res) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const user = new User ({
@@ -15,7 +15,7 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({error: error}))
 };
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   User.findOne({email: req.body.email})
     .then(user => {
       if (user === null) {
