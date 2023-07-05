@@ -26,10 +26,14 @@ mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertz
     next();
   });
   
-  app.use(cors());
-  
-  app.use(express.json());
+app.use(cors());
+app.use(express.json());
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
+
+// Utilisation de multer pour parse form-data
+// app.use(multer().array());
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
