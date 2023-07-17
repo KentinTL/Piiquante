@@ -1,8 +1,9 @@
 // Éléments et extensions requises
 const express = require('express');
-const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
+
 
 const saucesRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user');
@@ -29,15 +30,8 @@ mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertz
 app.use(cors());
 app.use(express.json());
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
-
-// Utilisation de multer pour parse form-data
-// app.use(multer().array());
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// app.use((req, res) => {
-//   res.json({message: 'Votre requête est reçu (°o°)'})
-// });
 module.exports = app;
