@@ -8,6 +8,9 @@ const sauceCtrl = require('../controllers/sauce');
 // get pour récupérer la liste complete de sauces dans notre base de donnée
 router.get('/', auth, sauceCtrl.displayAllSauces);
 
+// Post pour liké, disliké les sauces et envoyé les id des utlisateurs
+router.post('/:id/like', auth, sauceCtrl.likeSauce);
+
 // Envoie d'une nouvelle sauce via le formulaire
 router.post('/', auth, multer, sauceCtrl.createSauce);
 
