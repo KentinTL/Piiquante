@@ -21,6 +21,6 @@ Piiquante est un site d'avis(Notes) sur différentes sauces piquantes postées p
 ## Que pouvez vous faire sur Piiquante ?
 * Vous pouvez vous inscrire, puis vous connecter
 * Une fois inscrit ou connecté vous pouvez accéder à la liste des sauces éxistantes.
-* En cliquant sur Add Sauces ![Alt text](add-sauce.png) Vous pourrez ajouter une sauce de votre choix, attention à bien remplir tous les champs.
+* En cliquant sur Add Sauces ![Alt text](readme-img/add-sauce.png) Vous pourrez ajouter une sauce de votre choix, attention à bien remplir tous les champs.
 * En cliquant sur une des sauces de la liste vous pouvez avoir accès à des caractéristique plus détaillés ainsi que la possibilité de liké ou disliké celle-ci.
 * Si vous êtes le créateur de la sauce alors vous pourrez aussi en modifié les détails (ceux demandé lors de la création)
