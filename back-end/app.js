@@ -1,15 +1,15 @@
 // Éléments et extensions requises
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const cors = require('cors');
 const path = require('path');
-
 
 const saucesRoutes = require('./routes/sauce')
 const userRoutes = require('./routes/user');
 
 // Connection à mongoDB via Mongoose
-mongoose.connect('mongodb+srv://oc-qtl-piiquante:SYCfr3EIS32e7IAz@cluster0.4ertzs0.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.PIQUANTE_MONGO_ID}:${process.env.PIQUANTE_MONGO_PWD}@cluster0.4ertzs0.mongodb.net/test?retryWrites=true&w=majority`,
 { 
   useNewUrlParser: true,
   useUnifiedTopology: true })
