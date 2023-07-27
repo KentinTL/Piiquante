@@ -89,11 +89,11 @@ exports.likeSauce = (req, res, next) => {
         }
         // Suivant les cas :
         switch (like) {
-           // Lorsque bière est "liké"
+           // Lorsque sauce est "liké"
            case 1:
               newValues.usersLiked.push(userId);
               break;
-           // Lorsque bière "disliké"
+           // Lorsque sauce "disliké"
            case -1:
               newValues.usersDisliked.push(userId);
               break;
