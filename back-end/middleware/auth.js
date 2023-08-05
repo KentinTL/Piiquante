@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+// Ici on créer notre token utilisé dans le controllers/user.js login
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];

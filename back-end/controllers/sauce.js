@@ -113,9 +113,9 @@ exports.likeSauce = (req, res, next) => {
         // Calcul du nombre de likes et de dislikes
         newValues.likes = newValues.usersLiked.length;
         newValues.dislikes = newValues.usersDisliked.length;
-        // Mise à jour des nouvelles valeurs de la bière
+        // Mise à jour des nouvelles valeurs de la sauce
         Sauce.updateOne({ _id: sauceId }, newValues )
-           .then(() => res.status(200).json({ message: 'Nombre de like mit à jour !' }))
+           .then(() => res.status(200).json({ message: 'Nombre de like mis à jour !' }))
            .catch(error => res.status(500).json({ error }))
      })
      .catch(error => res.status(500).json({ error }));
